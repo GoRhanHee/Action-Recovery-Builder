@@ -93,11 +93,10 @@ jobs:
         ls -a ${{ steps.pwd.outputs.workspace-folder }}/out/target/product/ && echo
         ls -a ${{ steps.pwd.outputs.workspace-folder }}/out/target/product/${{ matrix.target }}/ && echo
         cd out/target/product/${{ matrix.target }}
-        mv recovery.img twrp-3.7.1_12-0-${{ matrix.target }}.img
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: twrp-${{ matrix.target }}-${{ steps.date.outputs.DATE_SHORT }}
-        path: workspace/out/target/product/${{ matrix.target }}/twrp-3.7.1_12-0-${{ matrix.target }}.img
+        path: workspace/out/target/product/${{ matrix.target }}/recovery.img
